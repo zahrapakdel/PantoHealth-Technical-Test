@@ -22,13 +22,13 @@ Features
 Project Structure
 -----------------
 
-*   src/App.tsx: The main application component. It fetches data from data.json and renders the appropriate chart component based on the data's type.
+*   `src/App.tsx`: The main application component. It fetches data from data.json and renders the appropriate chart component based on the data's type.
     
-*   src/components/SingleSeriesChart.tsx: A React component responsible for rendering a line chart for a single series of data using D3.js.
+*  `src/components/SingleSeriesChart.tsx`: A React component responsible for rendering a line chart for a single series of data using D3.js.
     
-*   src/components/MultiSeriesChart.tsx: A React component for rendering a line chart with up to three different data series, also using D3.js.
+*   `src/components/MultiSeriesChart.tsx`: A React component for rendering a line chart with up to three different data series, also using D3.js.
     
-*   src/types/chart.ts: Defines the TypeScript interfaces and types used throughout the application, including ChartData, SingleSeriesData, and MultiSeriesData. It also includes type-guard functions isSingleSeries and isMultiSeries to help with data validation.
+*   `src/types/chart.ts`: Defines the TypeScript interfaces and types used throughout the application, including ChartData, SingleSeriesData, and MultiSeriesData. It also includes type-guard functions isSingleSeries and isMultiSeries to help with data validation.
     
 
 Data Structure
@@ -38,7 +38,17 @@ The application expects a data.json file at the root of the project. This file s
 
 An example data.json could look like this:
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   [    {      "title": "Single Series Example",      "data": [        [1, 10],        [2, 25],        [3, 18],        [4, 30]      ]    },    {      "title": "Multi Series Example",      "data": [        [1, [10, 15, 5]],        [2, [25, 20, 12]],        [3, [18, 15, 8]],        [4, [30, 22, 10]]      ]    }  ]   `
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML
+```js
+[ 
+  {      "title": "Single Series Example",  
+         "data": [ [1, 10], [2, 25], [3, 18], [4, 30] ]   
+  }, 
+  {      "title": "Multi Series Example",    
+         "data": [ [1, [10, 15, 5]], [2, [25, 20, 12]],  [3, [18, 15, 8]], [4, [30, 22, 10]] ]   
+ }  
+ ]
+```
 
 *   title: The title of the chart.
     
@@ -50,16 +60,18 @@ Installation and Usage
 
 To run this project, you will need a modern JavaScript development environment.
 
-1.  **Clone the repository:**git clone
+1.  **Clone the repository:**
+    `git clone <repository-url>`
     
-2.  **Navigate to the project directory:**cd
+2.  **Navigate to the project directory:** `cd <project-name> `
     
-3.  **Install dependencies:**npm install
+3.  **Install dependencies:** `npm install` 
     
-4.  **Create a data.json file:**Place a data.json file in the public directory (or wherever your application fetches from) with the expected data structure.
+4.  **Create a data.json file:** 
+Place a `data.json` file in the `public` directory (or wherever your application fetches from) with the expected data structure.
     
-5.  **Run the development server:
-     **npm start
+5.  **Run the development server:**
+     `npm run dev`
     
 
-The application will be available at http://localhost:3000.
+The application will be available at `http://localhost:5173`.
