@@ -1,69 +1,74 @@
-# React + TypeScript + Vite
+Chart Visualization Application
+This project is a React application that visualizes data from a data.json file. It's designed to dynamically render either a single-series or multi-series line chart using the D3.js library, based on the structure of the data it receives.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
+Dynamic Chart Rendering: Automatically determines if a chart is single-series or multi-series based on the data structure.
 
-Currently, two official plugins are available:
+D3.js Integration: Leverages the power of D3.js for creating responsive and interactive data visualizations.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Component-Based: Built with reusable React components (SingleSeriesChart.tsx, MultiSeriesChart.tsx) for a clean and maintainable codebase.
 
-## Expanding the ESLint configuration
+Type-Safe: Uses TypeScript to define data types, ensuring data consistency and reducing runtime errors.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Error Handling: Displays a user-friendly error message if the data fails to load.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
+Responsive Design: The charts are designed to be responsive and adapt to different screen sizes.
+
+Project Structure
+src/App.tsx: The main application component. It fetches data from data.json and renders the appropriate chart component based on the data's type.
+
+src/components/SingleSeriesChart.tsx: A React component responsible for rendering a line chart for a single series of data using D3.js.
+
+src/components/MultiSeriesChart.tsx: A React component for rendering a line chart with up to three different data series, also using D3.js.
+
+src/types/chart.ts: Defines the TypeScript interfaces and types used throughout the application, including ChartData, SingleSeriesData, and MultiSeriesData. It also includes type-guard functions isSingleSeries and isMultiSeries to help with data validation.
+
+Data Structure
+The application expects a data.json file at the root of the project. This file should contain an array of objects, where each object represents a chart to be rendered.
+
+An example data.json could look like this:
+
+[
   {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
+    "title": "Single Series Example",
+    "data": [
+      [1, 10],
+      [2, 25],
+      [3, 18],
+      [4, 30]
+    ]
   },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
   {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+    "title": "Multi Series Example",
+    "data": [
+      [1, [10, 15, 5]],
+      [2, [25, 20, 12]],
+      [3, [18, 15, 8]],
+      [4, [30, 22, 10]]
+    ]
+  }
+]
+
+title: The title of the chart.
+
+data: An array of [timestamp, value] pairs for single-series charts, or [timestamp, [value1, value2, value3]] for multi-series charts.
+
+Installation and Usage
+To run this project, you will need a modern JavaScript development environment.
+
+Clone the repository:
+git clone <repository-url>
+
+Navigate to the project directory:
+cd <project-name>
+
+Install dependencies:
+npm install
+
+Create a data.json file:
+Place a data.json file in the public directory (or wherever your application fetches from) with the expected data structure.
+
+Run the development server:
+npm run dev
+
+The application will be available at http://localhost:5173.
